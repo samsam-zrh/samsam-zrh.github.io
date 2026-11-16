@@ -2,9 +2,10 @@ import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'rea
 import { useLang } from '../lib/i18n'
 import { contact } from '../data'
 import { Reveal, SectionHeader } from './ui'
+import { triggerMatrix } from './MatrixRain'
 
 type Line = { kind: 'in' | 'out'; node: ReactNode }
-const CMDS = ['help', 'whoami', 'xp', 'projects', 'skills', 'edu', 'contact', 'cv', 'sudo hire samuel', 'clear']
+const CMDS = ['help', 'whoami', 'xp', 'projects', 'skills', 'edu', 'contact', 'cv', 'sudo hire samuel', 'matrix', 'clear']
 
 export default function Terminal() {
   const { t, lang } = useLang()
@@ -50,6 +51,10 @@ export default function Terminal() {
       case 'cv':
         window.open(contact.cv, '_blank')
         out = <span>{fr ? 'Ouverture du CV…' : 'Opening résumé…'}</span>
+        break
+      case 'matrix':
+        setTimeout(triggerMatrix, 350)
+        out = <span className="text-cyan">{fr ? 'Suivez le lapin blanc… (astuce : ↑↑↓↓←→←→BA marche partout)' : 'Follow the white rabbit… (tip: ↑↑↓↓←→←→BA works anywhere)'}</span>
         break
       case 'sudo hire samuel':
       case 'sudo hire-samuel':

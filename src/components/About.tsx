@@ -1,17 +1,34 @@
+import { lazy, Suspense, useState } from 'react'
+import { useReducedMotion } from 'motion/react'
 import { Brain, Eye, LineChart, ShieldCheck } from 'lucide-react'
 import { useLang } from '../lib/i18n'
-import { CountUp, Reveal, SectionHeader, SpotlightCard } from './ui'
+import { CountUp, Reveal, ScrollWords, SectionHeader, SpotlightCard } from './ui'
+
+const ParticlePortrait = lazy(() => import('./ParticlePortrait'))
 
 const icons = [Brain, Eye, LineChart, ShieldCheck]
 
 export default function About() {
-  const { t } = useLang()
+  const { t, lang } = useLang()
+  const reduce = !!useReducedMotion()
+  const [count, setCount] = useState(0)
   return (
     <section id="about" className="relative mx-auto max-w-7xl scroll-mt-24 px-6 py-28 md:px-10">
-      <SectionHeader kicker={t.about.kicker} title={t.about.title} />
-      <Reveal delay={0.1}>
-        <p className="max-w-3xl text-lg leading-relaxed text-zinc-400">{t.about.text}</p>
-      </Reveal>
+      <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
+        <div>
+          <SectionHeader kicker={t.about.kicker} title={t.about.title} />
+          <ScrollWords text={t.about.text} className="font-display text-2xl font-medium leading-snug text-white md:text-[2rem]" />
+        </div>
+        <Reveal delay={0.1} className="relative mx-auto aspect-square w-full max-w-[560px]">
+          <div aria-hidden className="absolute inset-[12%] rounded-full bg-cyan/10 blur-[80px]" />
+          <Suspense fallback={null}>
+            <ParticlePortrait reduce={reduce} onCount={setCount} />
+          </Suspense>
+          <p aria-hidden className="pointer-events-none absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[11px] text-zinc-500">
+            <span className="text-cyan">samuel</span>.render(<span className="text-fuchsia">particles</span>={count.toLocaleString(lang)}) · {lang === 'fr' ? 'survolez · cliquez' : 'hover · click'}
+          </p>
+        </Reveal>
+      </div>
 
       <div className="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4">
         {t.about.stats.map((s, i) => (

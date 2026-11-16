@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import { Check, Copy, Download, Mail, Phone } from 'lucide-react'
 import { Github, Linkedin } from './brands'
 import { useLang } from '../lib/i18n'
 import { contact } from '../data'
 import { Magnetic, Reveal } from './ui'
+
+const BlackHole = lazy(() => import('./BlackHole'))
 
 export default function Contact() {
   const { t } = useLang()
@@ -21,7 +23,9 @@ export default function Contact() {
   ]
   return (
     <section id="contact" className="relative scroll-mt-24 overflow-hidden px-6 pt-28 md:px-10">
-      <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/3 h-[60vh] w-[80vw] -translate-x-1/2 rounded-full bg-gradient-to-r from-cyan/20 via-violet/25 to-fuchsia/20 blur-[140px]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_22%)]">
+        <Suspense fallback={null}><BlackHole centerY={0.74} reduce={!!reduce} /></Suspense>
+      </div>
       <div className="relative mx-auto max-w-5xl text-center">
         <Reveal><p className="font-mono text-xs uppercase tracking-[0.3em] text-cyan">{t.contact.kicker}</p></Reveal>
         <Reveal delay={0.1}>
@@ -68,7 +72,7 @@ export default function Contact() {
           whileInView={{ y: '0%' }}
           viewport={{ once: true }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center font-display text-[22vw] font-bold leading-[0.8] tracking-[-0.06em] bg-gradient-to-b from-white/25 to-white/0 bg-clip-text text-transparent [-webkit-text-stroke:1px_rgba(47,95,208,.35)]"
+          className="text-center font-display text-[22vw] font-bold leading-[0.8] tracking-[-0.06em] bg-gradient-to-b from-white/20 to-white/0 bg-clip-text text-transparent [-webkit-text-stroke:1px_rgba(47,95,208,.35)]"
         >
           ZERAH
         </motion.p>

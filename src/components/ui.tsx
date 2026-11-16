@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode, type MouseEvent } from 'react'
-import { motion, useInView, useMotionValue, useSpring, useReducedMotion, animate } from 'motion/react'
+import { motion, useInView, useMotionValue, useSpring, useReducedMotion, useScroll, useTransform, animate, type MotionValue } from 'motion/react'
 
 export function SectionHeader({ kicker, title }: { kicker: string; title: string }) {
   return (
@@ -126,5 +126,27 @@ export function Tag({ children }: { children: ReactNode }) {
     <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[11px] text-zinc-300">
       {children}
     </span>
+  )
+}
+
+function Word({ word, range, progress }: { word: string; range: [number, number]; progress: MotionValue<number> }) {
+  const opacity = useTransform(progress, range, [0.12, 1])
+  const blur = useTransform(progress, range, ['blur(6px)', 'blur(0px)'])
+  return <motion.span style={{ opacity, filter: blur }} className="inline-block whitespace-pre">{word} </motion.span>
+}
+
+export function ScrollWords({ text, className = '' }: { text: string; className?: string }) {
+  const ref = useRef<HTMLParagraphElement>(null)
+  const reduce = useReducedMotion()
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.45'] })
+  const words = text.split(' ')
+  if (reduce) return <p ref={ref} className={className}>{text}</p>
+  return (
+    <p ref={ref} className={className}>
+      <span className="sr-only">{text}</span>
+      <span aria-hidden>
+        {words.map((w, i) => <Word key={i} word={w} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]} />)}
+      </span>
+    </p>
   )
 }

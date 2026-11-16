@@ -14,6 +14,8 @@ import Skills from './components/Skills'
 import Terminal from './components/Terminal'
 import Contact from './components/Contact'
 import Cursor from './components/Cursor'
+import MatrixRain from './components/MatrixRain'
+import FluidCursor from './components/FluidCursor'
 
 const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -44,6 +46,8 @@ export default function App() {
         <AnimatePresence>{loading && <Preloader onDone={done} />}</AnimatePresence>
         <div className="grain">
           <Cursor />
+          <FluidCursor />
+          <MatrixRain />
           <Nav />
           <main>
             <Hero ready={!loading} />
