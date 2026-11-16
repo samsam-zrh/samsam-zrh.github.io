@@ -15,7 +15,7 @@ export default function Experience() {
       <SectionHeader kicker={t.xp.kicker} title={t.xp.title} />
       <div ref={ref} className="relative pl-10 md:pl-16">
         <div aria-hidden className="absolute left-3 top-0 h-full w-px bg-white/10 md:left-6" />
-        <motion.div aria-hidden style={{ scaleY: h }} className="absolute left-3 top-0 h-full w-px origin-top bg-gradient-to-b from-cyan via-violet to-fuchsia shadow-[0_0_12px_2px_rgba(34,211,238,.6)] md:left-6" />
+        <motion.div aria-hidden style={{ scaleY: h }} className="absolute left-3 top-0 h-full w-px origin-top bg-gradient-to-b from-cyan via-violet to-fuchsia shadow-[0_0_12px_2px_rgba(77,141,255,.6)] md:left-6" />
 
         {t.xp.items.map((x, i) => (
           <div key={i} className="relative mb-16">
@@ -62,7 +62,7 @@ export default function Experience() {
 
 function Dot({ children }: { children: React.ReactNode }) {
   return (
-    <div aria-hidden className="absolute -left-10 top-1 flex h-7 w-7 -translate-x-[1px] items-center justify-center rounded-full border border-cyan/50 bg-ink text-cyan shadow-[0_0_20px_rgba(34,211,238,.5)] md:-left-16 md:translate-x-[10px]">
+    <div aria-hidden className="absolute -left-10 top-1 flex h-7 w-7 -translate-x-[1px] items-center justify-center rounded-full border border-cyan/50 bg-ink text-cyan shadow-[0_0_20px_rgba(77,141,255,.5)] md:-left-16 md:translate-x-[10px]">
       {children}
     </div>
   )

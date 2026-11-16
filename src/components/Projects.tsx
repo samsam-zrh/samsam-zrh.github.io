@@ -22,9 +22,9 @@ function NewsVisual() {
     <div className="relative h-full w-full overflow-hidden font-mono text-[10px]">
       <svg viewBox="0 0 390 100" className="absolute inset-x-0 bottom-0 h-1/2 w-full" preserveAspectRatio="none">
         <defs>
-          <linearGradient id="ng" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#22d3ee" stopOpacity=".5" /><stop offset="1" stopColor="#22d3ee" stopOpacity="0" /></linearGradient>
+          <linearGradient id="ng" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#4d8dff" stopOpacity=".5" /><stop offset="1" stopColor="#4d8dff" stopOpacity="0" /></linearGradient>
         </defs>
-        <motion.polyline points={pts} fill="none" stroke="#22d3ee" strokeWidth="1.5" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 2.2 }} />
+        <motion.polyline points={pts} fill="none" stroke="#4d8dff" strokeWidth="1.5" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 2.2 }} />
         <polygon points={`0,100 ${pts} 390,100`} fill="url(#ng)" opacity=".5" />
       </svg>
       <motion.div className="space-y-1.5 p-4" animate={reduce ? {} : { y: [0, -96] }} transition={{ repeat: Infinity, duration: 8, ease: 'linear' }}>
@@ -43,20 +43,20 @@ function EyeVisual() {
   const reduce = useReducedMotion()
   return (
     <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(167,139,250,.35),transparent_55%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(47,95,208,.35),transparent_55%)]" />
       <svg viewBox="0 0 200 200" className="relative h-[85%]">
         {[70, 52, 34].map((r, i) => (
-          <motion.circle key={r} cx="100" cy="100" r={r} fill="none" stroke={i === 1 ? '#a78bfa' : '#22d3ee'} strokeOpacity=".5" strokeDasharray="4 6"
+          <motion.circle key={r} cx="100" cy="100" r={r} fill="none" stroke={i === 1 ? '#2f5fd0' : '#4d8dff'} strokeOpacity=".5" strokeDasharray="4 6"
             animate={reduce ? {} : { rotate: i % 2 ? -360 : 360 }} transition={{ repeat: Infinity, duration: 20 + i * 6, ease: 'linear' }} style={{ transformOrigin: '100px 100px' }} />
         ))}
-        <circle cx="100" cy="100" r="16" fill="#a78bfa" fillOpacity=".5" />
+        <circle cx="100" cy="100" r="16" fill="#2f5fd0" fillOpacity=".5" />
         <circle cx="100" cy="100" r="6" fill="#fff" />
         {Array.from({ length: 12 }).map((_, i) => {
           const a = (i / 12) * Math.PI * 2
-          return <circle key={i} cx={100 + Math.cos(a) * 88} cy={100 + Math.sin(a) * 88} r="2" fill="#f472b6" />
+          return <circle key={i} cx={100 + Math.cos(a) * 88} cy={100 + Math.sin(a) * 88} r="2" fill="#a9c6ff" />
         })}
       </svg>
-      <motion.div className="absolute inset-x-0 h-0.5 bg-cyan shadow-[0_0_18px_4px_rgba(34,211,238,.7)]"
+      <motion.div className="absolute inset-x-0 h-0.5 bg-cyan shadow-[0_0_18px_4px_rgba(77,141,255,.7)]"
         animate={reduce ? { top: '50%' } : { top: ['8%', '92%', '8%'] }} transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut' }} />
       <div className="absolute bottom-3 left-3 rounded-md bg-black/60 px-2 py-1 font-mono text-[10px] text-cyan">CLIP ⟶ proj ⟶ Gemma</div>
     </div>
@@ -73,11 +73,11 @@ function GridVisual() {
       <svg viewBox="0 0 400 110" className="h-full w-full" preserveAspectRatio="none">
         {Array.from({ length: 6 }).map((_, i) => <line key={i} x1="0" x2="400" y1={i * 22} y2={i * 22} stroke="white" strokeOpacity=".06" />)}
         {Array.from({ length: 48 }).map((_, i) => (
-          <motion.rect key={i} x={i * 8.3} width="5" rx="1" fill={i < 32 ? '#22d3ee' : '#a78bfa'} fillOpacity=".18"
+          <motion.rect key={i} x={i * 8.3} width="5" rx="1" fill={i < 32 ? '#4d8dff' : '#2f5fd0'} fillOpacity=".18"
             initial={{ y: 110, height: 0 }} whileInView={{ y: real[i], height: 110 - real[i] }} viewport={{ once: true }} transition={{ delay: i * 0.02, duration: 0.6 }} />
         ))}
-        <motion.polyline points={toPts(real.slice(0, 32))} fill="none" stroke="#22d3ee" strokeWidth="2" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6 }} />
-        <motion.polyline points={toPts(fc.slice(31), 31)} fill="none" stroke="#f472b6" strokeWidth="2" strokeDasharray="5 4" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 1.5 }} />
+        <motion.polyline points={toPts(real.slice(0, 32))} fill="none" stroke="#4d8dff" strokeWidth="2" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6 }} />
+        <motion.polyline points={toPts(fc.slice(31), 31)} fill="none" stroke="#a9c6ff" strokeWidth="2" strokeDasharray="5 4" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 1.5 }} />
         <line x1={31 * 8.3} x2={31 * 8.3} y1="0" y2="110" stroke="white" strokeOpacity=".3" strokeDasharray="2 3" />
       </svg>
       <div className="absolute left-5 top-3 flex gap-3 rounded bg-black/50 px-2 py-0.5 font-mono text-[10px]">

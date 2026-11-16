@@ -79,7 +79,7 @@ export default function Hero({ ready }: { ready: boolean }) {
                 transition={{ duration: 1, delay: 0.2, ease }}
                 className="relative h-20 w-20 shrink-0 sm:h-24 sm:w-24"
               >
-                <div className="animate-spin-slow absolute -inset-1 rounded-full bg-[conic-gradient(from_0deg,#22d3ee,#a78bfa,#f472b6,#22d3ee)] blur-[2px]" />
+                <div className="animate-spin-slow absolute -inset-1 rounded-full bg-[conic-gradient(from_0deg,#4d8dff,#2f5fd0,#a9c6ff,#4d8dff)] blur-[2px]" />
                 <img src="/samuel.png" alt="Portrait de Samuel Zerah" width={96} height={96} className="relative h-full w-full rounded-full border-4 border-ink object-cover" />
               </motion.div>
               <motion.p initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.8 }} className="font-mono text-sm text-zinc-400">

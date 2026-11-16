@@ -48,7 +48,7 @@ export function SpotlightCard({ children, className = '' }: { children: ReactNod
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        style={{ background: 'radial-gradient(420px circle at var(--x) var(--y), rgba(34,211,238,.16), rgba(167,139,250,.08) 40%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(420px circle at var(--x) var(--y), rgba(77,141,255,.16), rgba(47,95,208,.08) 40%, transparent 70%)' }}
       />
       <div className="relative h-full rounded-[calc(1.5rem-1px)] bg-panel/80 p-6 backdrop-blur-sm">{children}</div>
     </div>

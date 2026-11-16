@@ -23,7 +23,7 @@ export default function Cursor() {
         <motion.div animate={{ scale: hover ? 2.4 : 1 }} className="h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan/60 mix-blend-difference" />
       </motion.div>
       <motion.div aria-hidden style={{ x: sx, y: sy }} className="pointer-events-none fixed left-0 top-0 -z-0">
-        <div className="h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(34,211,238,.07),transparent_60%)]" />
+        <div className="h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(77,141,255,.07),transparent_60%)]" />
       </motion.div>
     </>
   )

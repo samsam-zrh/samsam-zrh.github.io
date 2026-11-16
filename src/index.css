@@ -6,9 +6,9 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --color-ink: #05060a;
   --color-panel: #0b0d14;
-  --color-cyan: #22d3ee;
-  --color-violet: #a78bfa;
-  --color-fuchsia: #f472b6;
+  --color-cyan: #4d8dff;
+  --color-violet: #2f5fd0;
+  --color-fuchsia: #a9c6ff;
   --animate-marquee: marquee var(--dur, 40s) linear infinite;
   --animate-spin-slow: spin 6s linear infinite;
   --animate-aurora: aurora 18s ease-in-out infinite alternate;
@@ -30,11 +30,11 @@ body {
   @apply bg-ink text-zinc-200 font-sans antialiased;
   overflow-x: hidden;
 }
-::selection { background: rgb(34 211 238 / .35); color: white; }
+::selection { background: rgb(77 141 255 / .35); color: white; }
 :focus-visible { outline: 2px solid var(--color-cyan); outline-offset: 3px; border-radius: 6px; }
 
 .text-gradient {
-  background: linear-gradient(90deg, #22d3ee, #a78bfa, #f472b6, #22d3ee);
+  background: linear-gradient(90deg, #ffffff, #a9c6ff, #4d8dff, #a9c6ff, #ffffff);
   background-size: 200% auto;
   -webkit-background-clip: text; background-clip: text; color: transparent;
   animation: shine 6s linear infinite;

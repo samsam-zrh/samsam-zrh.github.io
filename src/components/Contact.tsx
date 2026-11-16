@@ -36,7 +36,7 @@ export default function Contact() {
         <Reveal delay={0.3}>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Magnetic>
-              <a href={`mailto:${contact.email}`} className="relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-cyan via-violet to-fuchsia px-8 py-4 font-semibold text-ink shadow-[0_0_40px_rgba(167,139,250,.45)]">
+              <a href={`mailto:${contact.email}`} className="relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-cyan via-violet to-fuchsia px-8 py-4 font-semibold text-ink shadow-[0_0_40px_rgba(47,95,208,.45)]">
                 <Mail size={18} /> {contact.email}
               </a>
             </Magnetic>
@@ -68,7 +68,7 @@ export default function Contact() {
           whileInView={{ y: '0%' }}
           viewport={{ once: true }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center font-display text-[22vw] font-bold leading-[0.8] tracking-[-0.06em] bg-gradient-to-b from-white/25 to-white/0 bg-clip-text text-transparent [-webkit-text-stroke:1px_rgba(167,139,250,.35)]"
+          className="text-center font-display text-[22vw] font-bold leading-[0.8] tracking-[-0.06em] bg-gradient-to-b from-white/25 to-white/0 bg-clip-text text-transparent [-webkit-text-stroke:1px_rgba(47,95,208,.35)]"
         >
           ZERAH
         </motion.p>

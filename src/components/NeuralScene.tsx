@@ -19,8 +19,8 @@ const vert = /* glsl */ `
     gl_PointSize = aSize * uPixel * tw * (26.0 / -mv.z);
     gl_Position = projectionMatrix * mv;
     float k = clamp((position.y + 2.5) / 5.0, 0.0, 1.0);
-    vColor = mix(vec3(0.13, 0.83, 0.93), vec3(0.65, 0.55, 0.98), k);
-    vColor = mix(vColor, vec3(0.96, 0.45, 0.71), smoothstep(0.85, 1.0, fract(aSeed * 7.0)) * 0.8);
+    vColor = mix(vec3(0.30, 0.55, 1.0), vec3(0.18, 0.37, 0.82), k);
+    vColor = mix(vColor, vec3(0.75, 0.85, 1.0), smoothstep(0.85, 1.0, fract(aSeed * 7.0)) * 0.8);
     vAlpha = smoothstep(-9.0, -3.0, mv.z);
   }
 `
@@ -37,7 +37,7 @@ const pulseFrag = /* glsl */ `
     float d = length(gl_PointCoord - 0.5);
     float core = smoothstep(0.12, 0.0, d);
     float halo = pow(smoothstep(0.5, 0.0, d), 3.0) * 0.8;
-    gl_FragColor = vec4(mix(vec3(0.4, 0.9, 1.0), vec3(1.0), core), core + halo);
+    gl_FragColor = vec4(mix(vec3(0.55, 0.75, 1.0), vec3(1.0), core), core + halo);
   }
 `
 const frag = /* glsl */ `
@@ -82,7 +82,7 @@ function useGraph() {
     }
     const linePos = new Float32Array(edges.length * 6)
     const lineCol = new Float32Array(edges.length * 6)
-    const c1 = new THREE.Color('#22d3ee'), c2 = new THREE.Color('#a78bfa')
+    const c1 = new THREE.Color('#4d8dff'), c2 = new THREE.Color('#2f5fd0')
     edges.forEach(([a, b], e) => {
       linePos.set([pts[a].x, pts[a].y, pts[a].z, pts[b].x, pts[b].y, pts[b].z], e * 6)
       const ca = c1.clone().lerp(c2, (pts[a].y + R) / (2 * R))
@@ -187,11 +187,11 @@ function Network({ reduce }: { reduce: boolean }) {
       </points>
       <mesh ref={core}>
         <icosahedronGeometry args={[0.9, 1]} />
-        <meshBasicMaterial color="#a78bfa" wireframe transparent opacity={0.35} />
+        <meshBasicMaterial color="#2f5fd0" wireframe transparent opacity={0.35} />
       </mesh>
       <mesh>
         <sphereGeometry args={[0.55, 32, 32]} />
-        <meshBasicMaterial color="#22d3ee" transparent opacity={0.12} />
+        <meshBasicMaterial color="#4d8dff" transparent opacity={0.12} />
       </mesh>
     </group>
   )

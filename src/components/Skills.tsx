@@ -55,7 +55,7 @@ export default function Skills() {
                 </div>
                 <div className="mt-2 h-2 overflow-hidden rounded-full bg-white/5" role="meter" aria-valuenow={l.v} aria-valuemin={0} aria-valuemax={100} aria-label={`${l.l} ${l.lvl}`}>
                   <motion.div
-                    className="h-full rounded-full bg-gradient-to-r from-cyan via-violet to-fuchsia shadow-[0_0_12px_rgba(167,139,250,.6)]"
+                    className="h-full rounded-full bg-gradient-to-r from-cyan via-violet to-fuchsia shadow-[0_0_12px_rgba(47,95,208,.6)]"
                     initial={{ width: 0 }}
                     whileInView={{ width: `${l.v}%` }}
                     viewport={{ once: true }}
